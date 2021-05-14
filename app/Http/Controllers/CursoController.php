@@ -2,20 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
     public function index(){
-        return view('cursos.index');
+        // $cursos = Curso::all(); //carga todos los cursos de la bd
+        $cursos = Curso::orderBy('id', 'desc')->paginate(); //carga solo 15 registros
+        // return $cursos; //retorna el arreglo con toda los cursos
+
+        return view('cursos.index', compact('cursos'));
     }
 
     public function create(){
         return view('cursos.create');
     }
 
-    public function show($curso){
+    public function store(Request $request){
+        // return $request->all(); //mostrar todo el arreglo tomado del formulario
+        $curso = new Curso();
+        $curso->name = $request->name;
+        $curso->description = $request->description;
+        $curso->category = $request->category;
+
+        // return $curso; //mostrar el objeto tomado del formulario
+        $curso->save();
+        // return redirect()->route('cursos.show', $curso->id);
+        return redirect()->route('cursos.show', $curso); //$curso hace lo mismo que $curso->id
+    }
+
+    /*public function show($curso){
         // return view('cursos.show', ['curso' => $curso]);
+        return view('cursos.show', compact('curso')); //forma abreviada de la línea anterior
+    }*/
+    public function show($id){
+        $curso = Curso::find($id);
         return view('cursos.show', compact('curso'));
+    }
+
+    public function edit(Curso $curso){
+        return view('cursos.edit', compact('curso'));
+    }
+
+    public function update(Request $request, Curso $curso){
+        $curso->name = $request->name;
+        $curso->description = $request->description;
+        $curso->category = $request->category;
+        
+        $curso->save();
+        return redirect()->route('cursos.show', $curso);
     }
 }

@@ -3,5 +3,6 @@
 @section('title', 'Home')
 
 @section('content')
-    <p>Bienvenido a la página principal.</p>
+    <h1>Bienvenido a la página principal.</h1>
+    <a href="{{ route('cursos.index') }}">Cursos</a>
 @endsection

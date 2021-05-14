@@ -26,17 +26,19 @@ Route::get('/', HomeController::class);
 // Route::get('cursos', function(){
 //     return "Bienvenido a la página Cursos.";
 // });
-Route::get('cursos', [CursoController::class, 'index']);
+Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index'); //name() le da un nombre a la ruta
 
 // Route::get('cursos/create', function(){
 //     return "En esta página podrás crear un curso.";
 // });
-Route::get('cursos/create', [CursoController::class, 'create']);
+Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
+
+Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
 
 // Route::get('cursos/{curso}', function($curso){
 //     return "Bienvenido al curso " . strtoupper($curso);
 // });
-Route::get('cursos/{curso}', [CursoController::class, 'show']); 
+Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');
 
 // Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
 //     if ($categoria) {
@@ -45,3 +47,7 @@ Route::get('cursos/{curso}', [CursoController::class, 'show']);
 //         return "Bienvenido al curso " . strtoupper($curso);
 //     }
 // });
+
+Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit'); //ruta para listar el formulario editable
+
+Route::put('cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update'); //ruta para actualizar la base de datos
