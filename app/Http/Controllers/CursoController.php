@@ -20,6 +20,12 @@ class CursoController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([ //validar entes de guardar en la bd / de preferencia, tener las validaciones en otro archivo
+            'name' => 'required|max:10',
+            'description' => 'required|min:10',
+            'category' => 'required'
+        ]);
+
         // return $request->all(); //mostrar todo el arreglo tomado del formulario
         $curso = new Curso();
         $curso->name = $request->name;
@@ -46,6 +52,12 @@ class CursoController extends Controller
     }
 
     public function update(Request $request, Curso $curso){
+        $request->validate([ //validar entes de guardar en la bd
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required'
+        ]);
+
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->category = $request->category;

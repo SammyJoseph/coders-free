@@ -9,16 +9,31 @@
     @method('put') <!-- indica que el método POST es PUT -->
     <label>
         Nombre<br>
-        <input type="text" name="name" value="{{$curso->name}}">
+        <input type="text" name="name" value="{{old('name', $curso->name)}}">
     </label><br>
+    @error('name')
+        <small>*{{$message}}</small>
+        <br><br>
+    @enderror
+
     <label>
         Descripción<br>
-        <textarea name="description" rows="5">{{$curso->description}}</textarea>
+        <textarea name="description" rows="5">{{old('description', $curso->description)}}</textarea>
     </label><br>
+    @error('description')
+        <small>*{{$message}}</small>
+        <br><br>
+    @enderror
+
     <label>
         Categoría<br>
-        <input type="text" name="category" value="{{$curso->category}}">
-    </label><br><br>
+        <input type="text" name="category" value="{{old('category', $curso->category)}}">
+    </label><br>
+    @error('category')
+        <small>*{{$message}}</small>
+        <br><br>
+    @enderror
+
     <button type="submit">Actualizar curso</button>
 </form>
 @endsection

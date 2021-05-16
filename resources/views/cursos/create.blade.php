@@ -8,16 +8,31 @@
         @csrf <!-- agrega un token de seguridad al formulario -->
         <label>
             Nombre<br>
-            <input type="text" name="name">
+            <input type="text" name="name" value="{{old('name')}}">
         </label><br>
+        @error('name') <!--validación -->
+            <small>*{{$message}}</small>
+            <br><br>
+        @enderror
+
         <label>
             Descripción<br>
-            <textarea name="description" rows="5"></textarea>
+            <textarea name="description" rows="5">{{old('description')}}</textarea>
         </label><br>
+        @error('description') <!--validación -->
+            <small>*{{$message}}</small>
+            <br><br>
+        @enderror
+
         <label>
             Categoría<br>
-            <input type="text" name="category">
-        </label><br><br>
+            <input type="text" name="category" value="{{old('category')}}">
+        </label><br>
+        @error('category') <!--validación -->
+            <small>*{{$message}}</small>
+            <br><br>
+        @enderror
+
         <button type="submit">Registrar</button>
     </form>
 @endsection
