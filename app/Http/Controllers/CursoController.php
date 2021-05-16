@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCurso;
 
 class CursoController extends Controller
 {
@@ -19,14 +20,18 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function store(Request $request){
-        $request->validate([ //validar entes de guardar en la bd / de preferencia, tener las validaciones en otro archivo
+    public function store(StoreCurso $request){
+    // public function store(Request $request){
+        /* las validaciones pasaron a StoreCurso
+        $request->validate([ //validar entes de guardar en la bd / de preferencia, tener las validaciones en otro archivo de tipo Store
             'name' => 'required|max:10',
             'description' => 'required|min:10',
             'category' => 'required'
-        ]);
+        ]);*/
 
         // return $request->all(); //mostrar todo el arreglo tomado del formulario
+        
+        /* de esta forma tendríamos que asignar uno a unos los campos
         $curso = new Curso();
         $curso->name = $request->name;
         $curso->description = $request->description;
@@ -36,6 +41,19 @@ class CursoController extends Controller
         $curso->save();
         // return redirect()->route('cursos.show', $curso->id);
         return redirect()->route('cursos.show', $curso); //$curso hace lo mismo que $curso->id
+        */
+        
+        //asignación masiva con eloquent (cumple lo mismo que arriba)
+        /*$curso = Curso::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category' => $request->category
+        ]);*/
+
+        //asignación masiva automática con eloquent (cumple lo mismo que arriba)
+        // return $request->all(); //imprime el arreglo obtenido del formulario
+        $curso = Curso::create($request->all());
+        return redirect()->route('cursos.show', $curso);
     }
 
     /*public function show($curso){
@@ -58,11 +76,12 @@ class CursoController extends Controller
             'category' => 'required'
         ]);
 
-        $curso->name = $request->name;
+        /*$curso->name = $request->name; //se reemplaza abajo por asignación masiva
         $curso->description = $request->description;
         $curso->category = $request->category;
         
-        $curso->save();
+        $curso->save();*/
+        $curso->update($request->all());
         return redirect()->route('cursos.show', $curso);
     }
 }
