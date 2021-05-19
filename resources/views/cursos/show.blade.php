@@ -11,5 +11,11 @@
     <a href="{{route('cursos.index')}}">Volver a Cursos</a><br>
     <a href="{{route('cursos.edit', $curso)}}">Editar este curso</a>
     <p><strong>Categoría: </strong>{{$curso->category}}</p>
-    <p><strong>Descripción: </strong>{{$curso->description}}</p>
+    <p><strong>Descripción: </strong>{{$curso->description}}</p><br>
+
+    <form action="{{route('cursos.destroy', $curso)}}" method="POST">
+        @csrf <!-- token de seguridad en formulario -->
+        @method('delete') <!-- cambia el method POST hacia mi método delete -->
+        <button type="submit">Eliminar este curso</button>
+    </form>
 @endsection

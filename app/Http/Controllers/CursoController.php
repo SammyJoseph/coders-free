@@ -52,6 +52,7 @@ class CursoController extends Controller
 
         //asignación masiva automática con eloquent (cumple lo mismo que arriba)
         // return $request->all(); //imprime el arreglo obtenido del formulario
+
         $curso = Curso::create($request->all());
         return redirect()->route('cursos.show', $curso);
     }
@@ -65,11 +66,11 @@ class CursoController extends Controller
         return view('cursos.show', compact('curso'));
     }
 
-    public function edit(Curso $curso){
+    public function edit(Curso $curso){ //cargar vista de edición
         return view('cursos.edit', compact('curso'));
     }
 
-    public function update(Request $request, Curso $curso){
+    public function update(Request $request, Curso $curso){ //procesar edición en la bd
         $request->validate([ //validar entes de guardar en la bd
             'name' => 'required',
             'description' => 'required',
@@ -83,5 +84,10 @@ class CursoController extends Controller
         $curso->save();*/
         $curso->update($request->all());
         return redirect()->route('cursos.show', $curso);
+    }
+
+    public function destroy(Curso $curso){
+        $curso->delete();
+        return redirect()->route('cursos.index');
     }
 }

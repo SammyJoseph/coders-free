@@ -51,3 +51,5 @@ Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.sho
 Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit'); //ruta para listar el formulario editable
 
 Route::put('cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update'); //ruta para actualizar la base de datos
+
+Route::delete('cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy'); //ruta para eliminar un curso
