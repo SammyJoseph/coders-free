@@ -16,6 +16,15 @@
         @enderror
 
         <label>
+            Slug<br>
+            <input type="text" name="slug" value="{{old('slug')}}">
+        </label><br>
+        @error('slug') <!--validación -->
+            <small>*{{$message}}</small>
+            <br><br>
+        @enderror
+
+        <label>
             Descripción<br>
             <textarea name="description" rows="5">{{old('description')}}</textarea>
         </label><br>
@@ -32,7 +41,7 @@
             <small>*{{$message}}</small>
             <br><br>
         @enderror
-
+        <br>
         <button type="submit">Registrar</button>
     </form>
 @endsection

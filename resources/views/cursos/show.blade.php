@@ -10,6 +10,7 @@
     <h1>Bienvenido al curso #{{$curso->id}}: {{$curso->name}}</h1>
     <a href="{{route('cursos.index')}}">Volver a Cursos</a><br>
     <a href="{{route('cursos.edit', $curso)}}">Editar este curso</a>
+    <p><strong>Slug: </strong>{{$curso->slug}}</p>
     <p><strong>Categoría: </strong>{{$curso->category}}</p>
     <p><strong>Descripción: </strong>{{$curso->description}}</p><br>
 

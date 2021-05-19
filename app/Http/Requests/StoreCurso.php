@@ -25,6 +25,7 @@ class StoreCurso extends FormRequest
     {
         return [
             'name' => 'required|max:10',
+            'slug' => 'required',
             'description' => 'required|min:10',
             'category' => 'required'
         ];
@@ -34,6 +35,7 @@ class StoreCurso extends FormRequest
     {
         return[
             'name' => "NOMBRE DEL CURSO",
+            'slug' => "SLUG",
             'description' => "DESCRIPCIÓN",
             'category' => "CATEGORÍA"
         ];

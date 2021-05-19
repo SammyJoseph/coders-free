@@ -15,4 +15,9 @@ class Curso extends Model
     // protected $fillable = ['name', 'category', 'description']; //los campos aceptados por la asignación masiva en CursoController
     //protected $guarded = ['status']; //los campos protegidos (no aceptados) por la asignación masiva (reemplaza el código de arriba)
     protected $guarded = []; //aún no tengo campos protegidos
+
+    public function getRouteKeyName()
+    {        
+        return 'slug'; //retorna el slug (no editar el Model / mala práctica)
+    }
 }

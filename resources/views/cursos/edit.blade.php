@@ -17,6 +17,15 @@
     @enderror
 
     <label>
+        Slug<br>
+        <input type="text" name="slug" value="{{old('slug', $curso->slug)}}">
+    </label><br>
+    @error('slug')
+        <small>*{{$message}}</small>
+        <br><br>
+    @enderror
+
+    <label>
         Descripción<br>
         <textarea name="description" rows="5">{{old('description', $curso->description)}}</textarea>
     </label><br>
@@ -33,7 +42,7 @@
         <small>*{{$message}}</small>
         <br><br>
     @enderror
-
+    <br>
     <button type="submit">Actualizar curso</button>
 </form>
 @endsection

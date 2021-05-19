@@ -7,9 +7,11 @@
     {{-- route('cursos.create') llama al nombre de la ruta --}}
     <a href="{{ route('cursos.create') }}">Crear un curso</a>
     <ul>
-        @foreach ($cursos as $c)
+        @foreach ($cursos as $curso)
             <li>
-                <a href="{{ route('cursos.show', $c->id) }}">{{ $c->name }}</a>
+                
+                <a href="{{ route('cursos.show', $curso) }}">{{ $curso->name }}</a><br> <!-- Laravel ya sabe que debe tomar el id (lo mismo de arriba) -->
+                {{-- {{ route('cursos.show', $curso) }} //imprime el slug--}} 
             </li>
         @endforeach
     </ul>
