@@ -17,5 +17,9 @@
 <body>
     <h1>Correo electrónico</h1>
     <p>Este es el primer correo que mandaré por Laravel</p>
+
+    <p><strong>Nombre: </strong> {{$contacto['name']}}</p>
+    <p><strong>Email: </strong> {{$contacto['email']}}</p>
+    <p><strong>Mensaje: </strong> {{$contacto['message']}}</p>
 </body>
 </html>

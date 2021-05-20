@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
-use App\Mail\ContactMailable;
-use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +23,6 @@ Route::resource('cursos', CursoController::class); //reemplaza a las 7 rutas cre
 
 Route::view('nosotros', 'nosotros')->name('nosotros'); //view se utiliza para mostrar contenido estático (sin interacción con la bd)
 
-Route::get('contact', function () {
-    $correo = new ContactMailable;
-    
-    Mail::to('sam.tab.paz@gmail.com')->send($correo);
-    return "Mensaje enviado";
-})->name('contact');
+Route::get('contacto', [ContactController::class, 'index'])->name('contacto.index');
+
+Route::post('contacto', [ContactController::class, 'store'])->name('contacto.store');
