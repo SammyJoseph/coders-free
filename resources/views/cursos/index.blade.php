@@ -16,5 +16,5 @@
         @endforeach
     </ul>
 
-    {{ $cursos->links() }}
+    {{ $cursos->links() }} {{--navegación entre páginas (15 resultados por pág.--}}
 @endsection

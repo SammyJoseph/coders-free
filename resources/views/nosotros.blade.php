@@ -1,9 +1,9 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Home')
+@section('title', 'Nosotros')
 
 @section('content')
-    <h1>Bienvenido a la página principal.</h1>
+    <h1>Nosotros</h1>
     {{-- <a href="{{ route('cursos.index') }}">Cursos</a> --}}
     <div class="lorem-text">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac aliquam massa. Sed mollis odio aliquet porttitor viverra. Aenean vitae condimentum diam. Vestibulum eget placerat massa. Morbi non purus id elit interdum varius consectetur vitae enim. Fusce turpis nunc, porta et placerat vitae, fringilla non sapien. Sed est eros, maximus non laoreet sit amet, imperdiet vitae sapien. Sed placerat leo in sagittis ultrices. Praesent volutpat tristique ex quis condimentum. Morbi nec varius ex. Sed ipsum mauris, venenatis ac egestas in, condimentum at ex. Integer dapibus velit hendrerit, porta orci sed, convallis leo.</p>

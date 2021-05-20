@@ -15,7 +15,9 @@ use App\Http\Controllers\CursoController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 Route::resource('cursos', CursoController::class); //reemplaza a las 7 rutas creadas en web.old.php
 //Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos'); //si se quiere cambiar el nombre de ruta
+
+Route::view('nosotros', 'nosotros')->name('nosotros'); //view se utiliza para mostrar contenido estático (sin interacción con la bd)
