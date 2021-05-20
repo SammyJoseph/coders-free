@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
+use App\Mail\ContactMailable;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,10 @@ Route::resource('cursos', CursoController::class); //reemplaza a las 7 rutas cre
 //Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos'); //si se quiere cambiar el nombre de ruta
 
 Route::view('nosotros', 'nosotros')->name('nosotros'); //view se utiliza para mostrar contenido estático (sin interacción con la bd)
+
+Route::get('contact', function () {
+    $correo = new ContactMailable;
+    
+    Mail::to('sam.tab.paz@gmail.com')->send($correo);
+    return "Mensaje enviado";
+})->name('contact');
